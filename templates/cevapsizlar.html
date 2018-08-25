@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} Cevapsız Sorular {% endblock %}
+
+{% block content %}
+    <div style="padding: 30px; height: auto;">
+{% if user.is_authenticated %}
+    <div style="width: 80%; text-align: center; margin-left: 10%;">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Başlık</th>
+            <th scope="col">Gönderen</th>
+            <th scope="col">Tarih</th>
+            <th scope="col">Toplam Yorum</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for post in posts %}
+    
+    {% if post.approved_comments.count == 0 %}
+        <tr>
+            <th scope="row">{{ post.id }}</th>
+            <td><strong><a href="{% url 'detail' post.pk %}">{{ post.title }}</a></strong></td>
+            <td>{{ post.author }}</td>
+            <td>{{ post.pub_date }}</td>
+            <td><a href="{% url 'detail' post.pk %}">Yorum: {{ post.approved_comments.count }}</a></td>
+            <td><button type="button" class="btn btn-secondary btn-small"><a style="text-decoration: none; color: white;" href="{% url 'add_comment_to_post' post.pk %}">Yorum yap</a></button></td>
+        </tr>
+    {% endif %}
+    
+    {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p style="
+    	height: 200px; 
+    	padding: 80px; 
+    	display: inline-block;
+    	font-size: 18px; 
+    " >Bu sayfayı görebilmek için lütfen</p>
+    <a href="login" style="
+    	display: inline; 
+    	text-decoration: none;
+    	margin-left: -80px;
+    	color: #3076ff;
+    	font-size: 20px;
+    " >giriş</a>
+    <p style="display: inline;
+    	font-size: 18px;
+    "> yapınız.</p>
+{% endif %}
+</div>
+</div>
+</div>
+
+{% endblock %}

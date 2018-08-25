@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Kaydol {% endblock %}
+
+{% block content %}
+<div style="padding: 2%">
+  <h3>Kaydol</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="button" class="btn btn-success">Kaydol</button>
+  </form></div>
+ </div>
+{% endblock %}

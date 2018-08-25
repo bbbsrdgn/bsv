@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} BİR SORUN MU VAR? | Belki cevabı buradadır... {% endblock %}
+
+{% block content %}
+<div style="padding: 30px; height: auto;">
+  {% if user.is_authenticated %}
+	<div class="soru"><marquee behavior="alternate" direction="left" scrollamount="12"><i>Bize soru sormak ister misin ?</i></marquee></div>
+<div class="evet_hayir">
+	<div class="evet"><a class="btn btn-secondary btn-lg btn-block " href="soru_sor" role="button">Evet, soru soracağım</a></div>
+	<div class="hayir"><a class="btn btn-secondary btn-lg btn-block " href="en_yeniler" role="button">Hayır, soru cevaplayacağım</a></div>
+
+  {% else %}
+    <p style="height: 200px; 
+              padding: 80px; 
+              display: inline-block;
+    	      font-size: 18px;" >Bu sayfayı görebilmek için lütfen</p>
+    <a href="login" style="display: inline; 
+    	                   text-decoration: none;
+    	                   margin-left: -80px;
+    	                   color: #629fed;
+    	                   font-size: 20px;">giriş</a>
+    <p style="display: inline;
+    	      font-size: 18px;"> yapınız.</p>
+
+  {% endif %}
+
+</div></div>
+</div>
+{% endblock %}

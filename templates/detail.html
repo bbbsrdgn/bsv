@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} BİR SORUN MU VAR? | Belki cevabı buradadır... {% endblock %}
+
+{% block content %}
+<div style="padding: 30px;height: auto;">
+    {% if user.is_authenticated %}
+    <div>
+        {% for post in posts %}
+	    <div class="post">{% endfor %}
+    	<strong><a href="{% url 'detail' post.pk %}">{{ post.title }}</a></strong><span style="margin-left: 70px;"><i>{{ post.pub_date }}</i></span>
+    		<br/> 
+    		<p>{{ post.post }}<br/>
+    		<br><br><button type="button" class="btn btn-secondary btn-small"><a style="text-decoration: none; color: white;" href="{% url 'add_comment_to_post' pk=post.pk %}">Yorum yap</a></button>
+        <hr>
+
+{% for comment in post.comments.all %}
+    {% if user.is_authenticated or comment.approved_comment %}
+    <div class="comment">
+        <div class="date">
+            {{ comment.created_date }}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %}
+        </div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+    {% endif %}
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
+    {% else %}
+        <p style="
+    	   height: 200px; 
+    	   padding: 80px; 
+    	   display: inline-block;
+    	   font-size: 18px; 
+        " >Bu sayfayı görebilmek için lütfen</p>
+        <a href="login" style="
+    	   display: inline; 
+    	   text-decoration: none;
+    	   margin-left: -80px;
+    	   color: #3076ff;
+    	   font-size: 20px;
+        " >giriş</a>
+        <p style="display: inline;
+    	   font-size: 18px;
+        "> yapınız.</p>
+    {% endif %}
+
+
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

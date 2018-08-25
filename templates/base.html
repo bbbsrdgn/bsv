@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<meta charset="utf-8">
+	<meta name="description" content="BİR SORUN MU VAR? | Belki cevabı buradadır...">
+	<meta name="keywords" content="soru, sorular, bir sorum var, bir şey soracağım">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}" media="all">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="row">
+  <div class="col-6 col-md-4"></div>
+  <div class="col-6 col-md-4"></div>
+  <div class="col-6 col-md-4"></div>
+	<header id="header">
+		<a href="anasayfa"><img id="logo" src="{% static '/img/logo.PNG' %}"></a>
+			<div class="menu">	
+				<ul>
+					<li><a href="anasayfa">ANASAYFA</a></li>
+					<li><a href="tum_sorular">TÜM SORULAR</a></li>
+					<li><a href="cevapsizlar">CEVAPSIZLAR</a></li>
+					<li><a href="en_yeniler">EN YENİLER</a></li>
+					<li><a href="soru_sor">SORU SOR</a></li>
+					<li><a href="">GİRİŞ/KAYIT</a>
+						<ul>
+							<li><a href="login">Giriş</a></li>
+							<li><a href="kayit">Kayıt</a></li>
+							<li><a href="logout/">Çıkış</a></li>
+						</ul></li>
+					<li><a href="iletisim">İLETİŞİM</a></li>
+				</ul>
+			</div>
+			<div class="search">
+				<form class="form-inline my-2 my-lg-0">
+        		<input class="form-control mr-sm-2" type="search" placeholder="Ara" aria-label="Search">
+      			<button class="btn btn-success my-2 my-sm-0" type="submit">Ara</button>
+    			</form>	
+			</div>
+	</header>
+	<main id="main">
+		{% block content %}
+		{% endblock %}
+	</main>
+	<footer id="footer" style="width: 102%">
+		<i style="padding: 5px;">Her hakkı saklı olacak... Çok YAKINDA...</i> 
+	</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

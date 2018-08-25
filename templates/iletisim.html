@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} İletişim {% endblock %}
+
+{% block content %}
+<div style="padding: 30px; height: auto;">
+{% if user.is_authenticated %}
+	<div><marquee behavior="alternate" direction="left" scrollamount="15"><i><strong>Hatalıysak yaz bize :)</strong></i></marquee></div>
+   		<form method="POST" class="post-form" style="text-align: center; padding: 2%;">{% csrf_token %}
+        	{{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Gönder gelsin</button>
+    	</form>
+{% else %}
+    <p style="
+        height: 200px; 
+        padding: 80px; 
+        display: inline-block;
+        font-size: 18px; 
+    " >Bu sayfayı görebilmek için lütfen</p>
+    <a href="login" style="
+        display: inline; 
+        text-decoration: none;
+        margin-left: -80px;
+        color: #3076ff;
+        font-size: 20px;
+    " >giriş</a>
+    <p style="display: inline;
+        font-size: 18px;
+    "> yapınız.</p>
+{% endif %}</div>
+</div>
+{% endblock %}

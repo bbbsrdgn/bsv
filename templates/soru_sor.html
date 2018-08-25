@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Bir Soru Sor {% endblock %}
+
+{% block content %}
+<div style="padding: 30px;">
+{% if user.is_authenticated %}
+	<h4 style="text-align: center;">Bir Soru sor</h4>
+    <form method="POST" class="post-form" style="text-align: center; margin-top: 22px;">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Sor</button>
+    </form>
+{% else %}
+    <p style="
+        height: 200px; 
+        padding: 80px; 
+        display: inline-block;
+        font-size: 18px; 
+    " >Bu sayfayı görebilmek için lütfen</p>
+    <a href="login" style="
+        display: inline; 
+        text-decoration: none;
+        margin-left: -80px;
+        color: #3076ff;
+        font-size: 20px;
+    " >giriş</a>
+    <p style="display: inline;
+        font-size: 18px;
+    "> yapınız.</p>
+</div>
+{% endif %}
+</div>
+{% endblock %}

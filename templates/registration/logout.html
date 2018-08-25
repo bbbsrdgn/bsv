@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Çıkış Yap {% endblock %}
+
+	<div style="padding: 30px; height: auto;">
+		<h4 style="text-align: center;">Login</h4>
+		<form method="post" action="{% url 'logout' %}" style="margin-top:16px;margin-left: 350px;">
+			{% csrf_token %}
+			{{ form.as_p }}
+		<div style="margin-left: 140px;"><button type="submit" class="save btn btn-secondary">Çıkış</button></div>
+		</form>
+	</div>
+<br>
+{% endblock %}
